@@ -123,7 +123,7 @@ st.markdown(
             <li> Level 2: Personal Injury </li>
             <li> Level 3: Fatal </li>
         </ul>
-        The description of other variables is available <a href = "https://github.com/Data-For-Good-Regina/Data-Visualization-Challenges/tree/main/Data%20Vis%20Challenge%20%232%20-%20March%202021%20-%20Regina%20Bike%20Accident%20Data">here</a>
+        The description of other variables is available <a href = "https://github.com/adili0505/Regina-Bike-Accidents">here</a>
         <br>
         Upon data extraction which involved dropping off null variables, we obtained the following table.
         <br><br>
