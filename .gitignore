@@ -2,7 +2,7 @@
 .DS_Store
 
 # Secrets
-.streamlit/secrets.toml
+.streamlit
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
