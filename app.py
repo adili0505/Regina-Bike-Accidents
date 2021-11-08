@@ -19,7 +19,7 @@ pd.options.mode.chained_assignment = None
 # st.write("DB username:", st.secrets["db_username"])
 # st.write("DB password:", st.secrets["db_password"])
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+# st.set_option('deprecation.showPyplotGlobalUse', False)
 # st.set_page_config(layout="wide")
 
 
