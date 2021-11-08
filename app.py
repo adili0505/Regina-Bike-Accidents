@@ -19,7 +19,7 @@ pd.options.mode.chained_assignment = None
 # st.write("DB username:", st.secrets["db_username"])
 # st.write("DB password:", st.secrets["db_password"])
 
-# st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # st.set_page_config(layout="wide")
 
 
@@ -212,7 +212,7 @@ def severity(sev_data,time):
                 aspect=2, legend=False,
                 # order=sev_data,
                 kind = "bar")
-    plt.legend(title = 'SEVERITY', bbox_to_anchor = (1, 1)) #loc='upper right'
+    plt.legend(title = 'SEVERITY', loc='upper right') #loc='upper right', bbox_to_anchor = (1, 1)
     plt.ylabel('Total severity')
     plt.xlabel(time)
     st.pyplot()
@@ -227,7 +227,7 @@ def plot(data,condition,time):
             y = 'total_severe',       # y variable name
             hue = condition,  # group variable name
             data = data)
-    plt.legend(title = condition,bbox_to_anchor = (1, 1)) #loc='upper right'
+    plt.legend(title = condition,loc='upper right') #loc='upper right', bbox_to_anchor = (1, 1)
     plt.ylabel('Total severity')
     plt.xlabel(time)
     st.pyplot()
