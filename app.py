@@ -40,6 +40,20 @@ def load_data():
     bikedata['hour'] = bikedata.hour.astype(int)
     return bikedata
 
+def format_radio(p):
+    format = {
+        'WEATHER':'Weather',
+        "ROADSURF":'Road surface',
+        "ROADCOND":'Road condition',
+        'ACCSITE':'Accident site',
+        "NATLIGHT":'Natural light',
+        "ARTLIGHT":'Artificial light',
+        "ROADAUTH":'Road authority'
+        }
+    return format[p]
+
+def format_radio_time(p):
+    return p.title()
 
 st.header('Summary')
 st.markdown(
@@ -120,7 +134,7 @@ st.markdown(
     </div>
     """
 ,unsafe_allow_html=True)
-st.dataframe(bikedata)
+st.write(bikedata)
 
 st.markdown(
     """
@@ -168,7 +182,7 @@ new_row = {'year':'Total','injuries':tot_acc['injuries'].sum(),'fatalities':tot_
 tot_acc1 = tot_acc.append(new_row, ignore_index=True)
 
 st.subheader('3.1. Injuries and fatalities')
-st.write(tot_acc1)
+st.table(tot_acc1)
 
 st.markdown(
     """
@@ -192,13 +206,13 @@ severityby = st.sidebar.radio('Severity levels by',
                                     "ARTLIGHT",
                                     "ROADAUTH"
                                     # 'CONFIG'
-                                    ))
+                                    ), format_func=format_radio)
 
 time = st.sidebar.radio('Time',
                             options = ['year', 
                                        'month',
                                        'weekday',
-                                        'hour'])
+                                        'hour'], format_func=format_radio_time)
 
 # Total severity 
 def severity(sev_data,time):
@@ -234,7 +248,7 @@ def plot(data,condition,time):
 
 st.write(f"""The figure below shows accidents count as a function of {time.lower()}
          and for severity level parameter {severityby.lower()}.""")
-plot(bikes, severityby, time)
+plot(bikes, severityby.upper(), time)
 
 
 
