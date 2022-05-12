@@ -1,5 +1,6 @@
 # The purpose of this simple app is to visualize bike accidents occurred in the City of Regina 2010-2019
 # All Rights Reserved @2021, Adili Masanika
+
 # Packages used
 import streamlit as st
 import altair as alt
