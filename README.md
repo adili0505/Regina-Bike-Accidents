@@ -1,2 +1,2 @@
 # Regina-Bike-Accidents
-Severity of Bike Accidents in Regina 2010-2019
+Data Visualization for Bike Accidents in Regina 2010-2019
