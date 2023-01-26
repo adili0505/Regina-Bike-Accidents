@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import datetime
 import os
 
 # disable chained assignments
@@ -20,7 +21,7 @@ pd.options.mode.chained_assignment = None
 # st.write("DB username:", st.secrets["db_username"])
 # st.write("DB password:", st.secrets["db_password"])
 
-# st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # st.set_page_config(layout="wide")
 
 
@@ -31,7 +32,7 @@ st.title("Analysis on Severity of Bike Accidents in the City of Regina 2010 - 20
 def load_data():
     bikedata = pd.read_excel('BicycleCollisions-Regina-2010-2019.xlsx',parse_dates=True)
     bikedata.set_index('ACCDATE')
-    ACCDATE = datetime.datetime.strptime('ACCDATE','%Y-%m-%d').date()
+    #ACCDATE = datetime.datetime.strptime('ACCDATE','%Y-%m-%d').date()
     bikedata['weekday'] = bikedata['ACCDATE'].dt.strftime("%a")
     bikedata['month'] = bikedata['ACCDATE'].dt.strftime("%b")
     bikedata['hour'] = bikedata.ACCTIME.astype(str).str[:-2]
@@ -128,6 +129,7 @@ bikedata = load_data()
 bikes = bikedata[['ACCDATE','year','month','weekday','hour','NOINJ','NOKILLED','ACCSITE','SEVERITY','ROADAUTH','NATLIGHT','ARTLIGHT','WEATHER','ROADSURF','ROADCOND','USTREET1','USTREET2']]
 bikes = bikes.sort_values(by='ACCDATE').set_index('ACCDATE')
 
+
 st.header("2. Data and Model")
 st.markdown(
     """
@@ -172,6 +174,18 @@ st.write(
     In the previous section we summarized about the data and model used in the report. Herein we provide the results of the report.
     """
 )
+
+# CSS to inject contained in a string
+hide_table_row_index = """
+            <style>
+            thead tr th:first-child {display:none}
+            tbody th {display:none}
+            </style>
+            """
+
+# Inject CSS with Markdown
+st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
 
 # Total injuries and fatalities
 tot_inj = bikes.groupby(['year']).NOINJ.sum().reset_index(name='injuries')
