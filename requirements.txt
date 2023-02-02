@@ -1,6 +1,11 @@
 matplotlib==3.5.3
+<<<<<<< HEAD
 numpy==1.24.1
 pandas==1.5.3
+=======
+numpy==1.21.6
+pandas==1.3.5
+>>>>>>> 7135dc81fc98fb5c42a77291a24460a891785bd3
 streamlit==1.17.0
 seaborn==0.12.2
 altair==4.2.0
