@@ -13,9 +13,8 @@ import os
 # disable chained assignments
 pd.options.mode.chained_assignment = None
 
-# st.write("Has environment variables been set:",
+# st.write("Has environment variables been set:",)
 # os.environ["db_username"] == st.secrets["db_username"]
-# )
 
 # st.write("DB username:", st.secrets["db_username"])
 # st.write("DB password:", st.secrets["db_password"])
