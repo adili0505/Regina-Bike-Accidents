@@ -30,7 +30,7 @@ st.title("Analysis on Severity of Bike Accidents in the City of Regina 2010 - 20
 def load_data():
     bikedata = pd.read_excel('BicycleCollisions-Regina-2010-2019.xlsx',parse_dates=True)
     bikedata.set_index('ACCDATE')
-    #ACCDATE = datetime.datetime.strptime('ACCDATE','%Y-%m-%d').date()
+    bikedata["ACCDATE"] = bikedata["ACCDATE"].dt.strftime("%Y-%m-%d)
     bikedata['weekday'] = bikedata['ACCDATE'].dt.strftime("%a")
     bikedata['month'] = bikedata['ACCDATE'].dt.strftime("%b")
     bikedata['hour'] = bikedata.ACCTIME.astype(str).str[:-2]
